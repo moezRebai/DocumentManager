@@ -8,7 +8,7 @@
              xmlns:views="clr-namespace:DocumentManager.Views"
              mc:Ignorable="d" 
              DataContext="{Binding DocumentInstance, Source={StaticResource Locator}}"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="450">
     <UserControl.Resources>
         <helpers:ExtensionToIconConverter x:Key="DocumentExtensionToIconConverter"/>
         <Style TargetType="DataGridCell" x:Key="CellStyle">
@@ -17,9 +17,9 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -51,17 +51,17 @@
             </Button>
         </Grid>
 
-        <GroupBox Grid.Row="1" Header="Documents">
-        
-            <DataGrid Margin="0,5"
-                  ItemsSource="{Binding DocumentsListCollection, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
-                  CanUserResizeColumns="True" CanUserAddRows="False"
-                  CanUserResizeRows="False" CanUserSortColumns="True"  AutoGenerateColumns="False"
+        <GroupBox Grid.Row="1" Header="{Binding DocumentTitle}">
+
+            <DataGrid Margin="0,5" CanUserResizeColumns="False" 
+
+                ItemsSource="{Binding DocumentsListCollection, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                  CanUserAddRows="False"
+                  CanUserSortColumns="True"  AutoGenerateColumns="False"
                   SelectedItem="{Binding SelectedDocument}">
             
             <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="{x:Static resources:Resources.Name}" IsReadOnly="True">
+                    <DataGridTemplateColumn Header="{x:Static resources:Resources.Name}" IsReadOnly="True" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -71,11 +71,11 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="{x:Static resources:Resources.Version}" CellStyle="{StaticResource CellStyle}" IsReadOnly="True" Binding="{Binding Version}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="{x:Static resources:Resources.Version}" CellStyle="{StaticResource CellStyle}" IsReadOnly="True"  Binding="{Binding Version}"></DataGridTextColumn>
                     <DataGridTextColumn Header="{x:Static resources:Resources.CreatedBy}"   CellStyle="{StaticResource CellStyle}"  IsReadOnly="True" Binding="{Binding CreatedBy}"></DataGridTextColumn>
                     <DataGridTextColumn Header="{x:Static resources:Resources.DateCreation}" CellStyle="{StaticResource CellStyle}"  IsReadOnly="True" Binding="{Binding DateCreation}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="{x:Static resources:Resources.DateModification}" CellStyle="{StaticResource CellStyle}"  IsReadOnly="True" Binding="{Binding ModificationDate}" x:Name="ColDateModification"></DataGridTextColumn>
-                    <DataGridTemplateColumn Header="{x:Static resources:Resources.Action}" IsReadOnly="True" Width="*">
+                    <DataGridTextColumn Header="{x:Static resources:Resources.DateModification}" CellStyle="{StaticResource CellStyle}"  IsReadOnly="True" Binding="{Binding ModificationDate}"></DataGridTextColumn>
+                    <DataGridTemplateColumn Header="{x:Static resources:Resources.Action}" MinWidth="80">
                         <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                                 <Grid>
@@ -83,31 +83,19 @@
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <Button Margin="2" Grid.Column="0">
-                                        <StackPanel Orientation="Horizontal">
-                                            <Image Source="../Images/OpenDoc.png" Width="16" Height="16"/>
-                                            <TextBlock Text="Open" VerticalAlignment="Center" Margin="2,0,0,0" />
-                                        </StackPanel>
+                                        <Image Source="../Images/OpenDoc.png" Width="16" Height="16"/>
                                     </Button>
                                     <Button Margin="2"  Grid.Column="1">
-                                        <StackPanel Orientation="Horizontal">
                                             <Image Source="../Images/EditDoc.png" Width="16" Height="16"/>
-                                            <TextBlock Text="Edit" VerticalAlignment="Center" Margin="2,0,0,0" />
-                                        </StackPanel>
                                     </Button>
                                     <Button Margin="2"  Grid.Column="2">
-                                        <StackPanel Orientation="Horizontal">
                                             <Image Source="../Images/DeleteDoc.png" Width="16" Height="16"/>
-                                            <TextBlock Text="Delete" VerticalAlignment="Center" Margin="2,0,0,0" />
-                                        </StackPanel>
                                     </Button>
                                     <Button Margin="2"  Grid.Column="3">
-                                        <StackPanel Orientation="Horizontal">
-                                            <Image Source="../Images/Rename.png" Width="16" Height="16"/>
-                                            <TextBlock Text="Rename" VerticalAlignment="Center" Margin="2,0,0,0" />
-                                        </StackPanel>
+                                        <Image Source="../Images/Rename.png" Width="16" Height="16"/>
                                     </Button>
                                 </Grid>
                             </DataTemplate>
@@ -117,12 +105,15 @@
         </DataGrid>
 
         </GroupBox>
-        <GroupBox Grid.Row="2" Header="{x:Static resources:Resources.Comments}">
+        <Expander Grid.Row="2" Header="{x:Static resources:Resources.Comments}" IsExpanded="True">
             <Grid>
                 <views:CommentsView></views:CommentsView>
             </Grid>
+        </Expander>
+        <GroupBox Grid.Row="3" Header="Send File by Email">
+            <views:LegendView></views:LegendView>
         </GroupBox>
-        <Grid Grid.Row="3" Margin="5,5,0,0">
+        <Grid Grid.Row="4" Margin="5,5,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition  Width="2*"/>
@@ -140,9 +131,11 @@
             </Button>
             <Button Grid.Column="3" Margin="5,0"  ToolTip="{x:Static resources:Resources.CutDocument}"  Command="{Binding EmailCommand}" Content="{x:Static resources:Resources.CutDocument}">
             </Button>
-            <Button Grid.Column="4" Margin="5,0"  ToolTip="{x:Static resources:Resources.Duplicate}"  Command="{Binding DownloadCommand}" Content="{x:Static resources:Resources.Duplicate}">
+            <Button Grid.Column="4" Margin="5,0"  ToolTip="{x:Static resources:Resources.PasteDocument}"  Command="{Binding PasteCommand}" Content="{x:Static resources:Resources.PasteDocument}">
             </Button>
-            <Button Grid.Column="5" Margin="5,0" ToolTip="{x:Static resources:Resources.SetAccess}"  Command="{Binding SelectCommand}" Content="{x:Static resources:Resources.SetAccess}">
+            <Button Grid.Column="5" Margin="5,0"  ToolTip="{x:Static resources:Resources.Duplicate}"  Command="{Binding DownloadCommand}" Content="{x:Static resources:Resources.Duplicate}">
+            </Button>
+            <Button Grid.Column="6" Margin="5,0" ToolTip="{x:Static resources:Resources.SetAccess}"  Command="{Binding SelectCommand}" Content="{x:Static resources:Resources.SetAccess}">
             </Button>
            
         </Grid>

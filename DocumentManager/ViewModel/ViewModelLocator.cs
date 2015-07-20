@@ -29,6 +29,8 @@ namespace DocumentManager.ViewModel
             SimpleIoc.Default.Register<CommentsViewModel>();
 
             SimpleIoc.Default.Register<FolderModelsViewModel>();
+
+            SimpleIoc.Default.Register<LegendViewModel>();
         }
 
         /// <summary>
@@ -101,6 +103,22 @@ namespace DocumentManager.ViewModel
                 return ServiceLocator.Current.GetInstance<FolderModelsViewModel>();
             }
         }
+
+
+        /// <summary>
+        /// Gets the Repository property.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+            "CA1822:MarkMembersAsStatic",
+            Justification = "This non-static member is needed for data binding purposes.")]
+        public LegendViewModel LegendInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<LegendViewModel>();
+            }
+        }
+
         /// <summary>
         /// Cleans up all the resources.
         /// </summary>

@@ -20,6 +20,8 @@ namespace DocumentManager.ViewModel
 
         private readonly DocumentViewModel _documentViewModel;
 
+        private readonly LegendViewModel _legendViewModel;
+
         private readonly FolderModelsViewModel _modelViewModel;
 
         #endregion
@@ -43,6 +45,7 @@ namespace DocumentManager.ViewModel
         private void SelectedFolderChanged()
         {
             _documentViewModel.DocumentsListCollection = SelectedFolder.Documents;
+            _legendViewModel.DocumentsListCollection = SelectedFolder.Documents;
             _modelViewModel.ModelsListCollection = ToObservableCollection(SelectedFolder.Documents.Where(x => x.IsModel));
         }
         public ObservableCollection<Repository> RepositoriesListCollection
@@ -73,6 +76,7 @@ namespace DocumentManager.ViewModel
             DeleteCommand = new RelayCommand(DeleteRepository, () => SelectedFolder != null);
             EditCommand = new RelayCommand(EditRepository, () => SelectedFolder != null);
             _documentViewModel = SimpleIoc.Default.GetInstance<DocumentViewModel>();
+            _legendViewModel = SimpleIoc.Default.GetInstance<LegendViewModel>();
             _modelViewModel = SimpleIoc.Default.GetInstance<FolderModelsViewModel>();
         }
 

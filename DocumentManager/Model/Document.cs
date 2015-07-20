@@ -123,5 +123,10 @@ namespace DocumentManager.Model
                 PropertyChanged(this, e);
             }
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

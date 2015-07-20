@@ -223,6 +223,15 @@ namespace DocumentManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter your folder name....
+        /// </summary>
+        public static string FolderName {
+            get {
+                return ResourceManager.GetString("FolderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Models.
         /// </summary>
         public static string Models {
@@ -309,6 +318,24 @@ namespace DocumentManager.Properties {
         public static string SelectAll {
             get {
                 return ResourceManager.GetString("SelectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Mail.
+        /// </summary>
+        public static string SendMail {
+            get {
+                return ResourceManager.GetString("SendMail", resourceCulture);
             }
         }
         

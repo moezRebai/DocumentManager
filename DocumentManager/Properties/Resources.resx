@@ -171,6 +171,9 @@
   <data name="FindByFolder" xml:space="preserve">
     <value>Find in Folder</value>
   </data>
+  <data name="FolderName" xml:space="preserve">
+    <value>Enter your folder name...</value>
+  </data>
   <data name="Models" xml:space="preserve">
     <value>Models</value>
   </data>
@@ -200,6 +203,12 @@
   </data>
   <data name="SelectAll" xml:space="preserve">
     <value>Select All</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="SendMail" xml:space="preserve">
+    <value>Send Mail</value>
   </data>
   <data name="SetAccess" xml:space="preserve">
     <value>Set Access</value>

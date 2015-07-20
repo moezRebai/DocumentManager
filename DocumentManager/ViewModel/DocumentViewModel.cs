@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Documents;
 using System.Windows.Input;
 using DocumentManager.Model;
 using GalaSoft.MvvmLight;
@@ -19,11 +18,28 @@ namespace DocumentManager.ViewModel
 
         private Document _selectedDocument;
 
+        private string _documentTitle;
+
         private readonly CommentsViewModel _commentViewModel;
 
         #endregion
 
         #region Properties
+
+
+        public string DocumentTitle
+        {
+            get { return _documentTitle; }
+            set
+            {
+                if (value != _documentTitle)
+                {
+                    _documentTitle = value;
+                    RaisePropertyChanged("DocumentTitle");
+                }
+            }
+        }
+
         public Document SelectedDocument
         {
             get { return _selectedDocument; }
@@ -52,8 +68,14 @@ namespace DocumentManager.ViewModel
             set
             {
                 _documentsListCollection = value;
+                SetDocumentTitle();
                 RaisePropertyChanged("DocumentsListCollection");
             }
+        }
+
+        private void SetDocumentTitle()
+        {
+            DocumentTitle = string.Format("{0} Documents", DocumentsListCollection.Count);
         }
 
         #endregion

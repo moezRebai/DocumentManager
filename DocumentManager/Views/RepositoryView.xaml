@@ -9,26 +9,43 @@
              mc:Ignorable="d" 
              DataContext="{Binding RepositoryInstance, Source={StaticResource Locator}}"
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style x:Key="TextStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="TextDecorations">
+                <Setter.Value>
+                    <TextDecorationCollection>
+                        <TextDecoration Location="Underline" PenOffset="3">
+                            <TextDecoration.Pen>
+                                <Pen Brush="#41B1E1" Thickness="2"/>
+                            </TextDecoration.Pen>
+                        </TextDecoration>
+                    </TextDecorationCollection>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        
-        <Grid >
+        <TextBlock Grid.ColumnSpan="2" Margin="5,0,0,0"  Text="List of Documents" Style="{StaticResource TextStyle}" />
+        <Grid Grid.Row="1" Grid.Column="0" Margin="0,5,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <GroupBox  Header="Repository" MinWidth="250">
+            <GroupBox  Header="Repository">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
@@ -53,24 +70,26 @@
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
-                    </ListBox>
+                    </ListBox>                    
+                    <GroupBox Grid.Row="1" BorderThickness="1" Header="Add New Repository" Margin="0,5,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Text="{Binding NewFolderName}" controls:TextBoxHelper.Watermark="{x:Static resources:Resources.FolderName}" ></TextBox>
+                            <Button Grid.Row="0" Grid.Column="1" Margin="5,0,0,0" Width="75" ToolTip="{x:Static resources:Resources.Add}"  Command="{Binding AddCommand}" Content="{x:Static resources:Resources.Add}"/>
+                            
+                        </Grid>
+                        
+                    </GroupBox>
 
-                    <Border Grid.Row="1" BorderThickness="1" BorderBrush="ForestGreen" Margin="0,5,0,0">
-                        <StackPanel Orientation="Horizontal" >
-                            <Button ToolTip="{x:Static resources:Resources.Add}"  Command="{Binding AddCommand}" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
-                                <Image Source="../Images/AddIt.png" Width="24" Height="24"></Image>
-                            </Button>
-                            <Button ToolTip="{x:Static resources:Resources.Delete}"  Command="{Binding DeleteCommand}" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
-                                <Image Source="../Images/DeleteIt.png" Width="24" Height="24"></Image>
-                            </Button>
-                            <Button ToolTip="{x:Static resources:Resources.Edit}"  Command="{Binding EditCommand}" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
-                                <Image Source="../Images/Edit.png" Width="24" Height="24"></Image>
-                            </Button>
-                        </StackPanel>
-                    </Border>
+                    <Grid Grid.Row="2" Margin="0,5,0,0">
+                        <Button ToolTip="{x:Static resources:Resources.Delete}" Content="{x:Static resources:Resources.Delete}" Width="100" Command="{Binding DeleteCommand}" HorizontalAlignment="Left" Height="25"/>
+                        <Button ToolTip="{x:Static resources:Resources.Edit}"  Content="{x:Static resources:Resources.Edit}" Width="100" Command="{Binding EditCommand}" Height="25" HorizontalAlignment="Right"/>
+                    </Grid>
                 </Grid>
             </GroupBox>
-
             <GroupBox Grid.Row="1" Header="{x:Static resources:Resources.Models}" >
                 <Grid>
                     <Grid.RowDefinitions>
@@ -82,17 +101,15 @@
                         <views:FolderModelsView></views:FolderModelsView>
                     </Grid>
 
-                    <Button Grid.Row="1" ToolTip="{x:Static resources:Resources.Add}"  Command="{Binding AddCommand}" Content="{x:Static resources:Resources.OpenModel}"> 
+                    <Button Grid.Row="1" VerticalAlignment="Bottom" ToolTip="{x:Static resources:Resources.Add}" Height="25" Command="{Binding AddCommand}" Content="{x:Static resources:Resources.OpenModel}"> 
                     </Button>
                 </Grid>
             </GroupBox>
-        </Grid>
-        
-        <Grid Grid.Row="0" Grid.Column="1">
+        </Grid>      
+        <Grid Grid.Row="1" Grid.Column="1">
             <views:DocumentView></views:DocumentView>
-        </Grid>
-         
-        <GroupBox Header="Find" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+        </Grid>  
+        <GroupBox Header="Find" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>

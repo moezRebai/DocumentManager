@@ -78,6 +78,7 @@
     </ApplicationDefinition>
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Helpers\ExtensionToIconConverter.cs" />
+    <Compile Include="Helpers\ModelClass.cs" />
     <Compile Include="Model\DataItem.cs" />
     <Compile Include="Model\DataService.cs" />
     <Compile Include="Model\Document.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="ViewModel\CommentsViewModel.cs" />
     <Compile Include="ViewModel\DocumentViewModel.cs" />
     <Compile Include="ViewModel\FolderModelsViewModel.cs" />
+    <Compile Include="ViewModel\LegendViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RepositoryViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -101,8 +103,14 @@
     <Compile Include="Views\FolderModelsView.xaml.cs">
       <DependentUpon>FolderModelsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LegendView.xaml.cs">
+      <DependentUpon>LegendView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RepositoryView.xaml.cs">
       <DependentUpon>RepositoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UnderlinedTitle.xaml.cs">
+      <DependentUpon>UnderlinedTitle.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -136,7 +144,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\LegendView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\RepositoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UnderlinedTitle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -201,6 +217,17 @@
   <ItemGroup>
     <Resource Include="Images\Email.png" />
     <Resource Include="Images\NewDoc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\EmailLegend.png" />
+    <Resource Include="Images\SelectLegend.png" />
+    <Resource Include="Images\TextLegend.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Delete24.png" />
+    <Resource Include="Images\Edit24.png" />
+    <Resource Include="Images\Rename32.png" />
+    <Resource Include="Images\View24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

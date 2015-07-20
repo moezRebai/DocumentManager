@@ -41,3 +41,7 @@ D:\Backups\Freelancer Ayoub\T4\LightMediaPlayer\DocumentManager\DocumentManager\
 D:\Backups\Freelancer Ayoub\T4\LightMediaPlayer\DocumentManager\DocumentManager\obj\Debug\Views\CommentsView.g.cs
 D:\Backups\Freelancer Ayoub\T4\LightMediaPlayer\DocumentManager\DocumentManager\obj\Debug\Views\FolderModelsView.baml
 D:\Backups\Freelancer Ayoub\T4\LightMediaPlayer\DocumentManager\DocumentManager\obj\Debug\Views\FolderModelsView.g.cs
+D:\Backups\Freelancer Ayoub\T4\LightMediaPlayer\DocumentManager\DocumentManager\obj\Debug\Views\UnderlinedTitle.baml
+D:\Backups\Freelancer Ayoub\T4\LightMediaPlayer\DocumentManager\DocumentManager\obj\Debug\Views\UnderlinedTitle.g.cs
+D:\Backups\Freelancer Ayoub\T4\LightMediaPlayer\DocumentManager\DocumentManager\obj\Debug\Views\LegendView.baml
+D:\Backups\Freelancer Ayoub\T4\LightMediaPlayer\DocumentManager\DocumentManager\obj\Debug\Views\LegendView.g.cs
