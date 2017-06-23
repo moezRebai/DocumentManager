@@ -12,7 +12,7 @@ namespace DocumentManager.ViewModel
     public class MainViewModel : ViewModelBase
     {
         private readonly IDataService _dataService;
-
+        // Added by Moez.
         /// <summary>
         /// The <see cref="WelcomeTitle" /> property's name.
         /// </summary>

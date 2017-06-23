@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\Backups\Freelancer Ayoub\T4\LightMediaPlayer\DocumentManager\DocumentManager\obj\Debug\
+C:\Users\Developpeur\Desktop\Docs Utils\DocumentManager\DocumentManager\obj\Debug\
 DocumentManager
 none
 false
 CODE_ANALYSIS;DEBUG;TRACE
-D:\Backups\Freelancer Ayoub\T4\LightMediaPlayer\DocumentManager\DocumentManager\App.xaml
+C:\Users\Developpeur\Desktop\Docs Utils\DocumentManager\DocumentManager\App.xaml
 91214876124
 
-31894407261
-18-582777543
+311067870981
+68528262993
 MainWindow.xaml;Skins\MainSkin.xaml;Views\AddNewRepository.xaml;Views\CommentsView.xaml;Views\DocumentView.xaml;Views\FolderModelsView.xaml;Views\LegendView.xaml;Views\RepositoryView.xaml;Views\UnderlinedTitle.xaml;
 
 True
